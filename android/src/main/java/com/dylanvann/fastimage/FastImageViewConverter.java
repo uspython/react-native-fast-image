@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
 import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.Headers;
@@ -111,7 +112,8 @@ class FastImageViewConverter {
             .onlyRetrieveFromCache(onlyFromCache)
             .skipMemoryCache(skipMemoryCache)
             .priority(priority)
-            .placeholder(TRANSPARENT_DRAWABLE);
+            .placeholder(TRANSPARENT_DRAWABLE)
+            .format(DecodeFormat.PREFER_RGB_565);
         
         if (imageSource.isResource()) {
             // Every local resource (drawable) in Android has its own unique numeric id, which are
